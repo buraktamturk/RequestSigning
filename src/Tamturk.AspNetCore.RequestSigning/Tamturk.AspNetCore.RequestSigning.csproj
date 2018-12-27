@@ -2,6 +2,11 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
+        <Authors>Burak Tamturk</Authors>
+        <PackageProjectUrl>https://github.com/buraktamturk/RequestSigning</PackageProjectUrl>
+        <PackageLicenseUrl>https://github.com/buraktamturk/RequestSigning/blob/master/LICENSE</PackageLicenseUrl>
+        <RepositoryUrl>https://github.com/buraktamturk/RequestSigning</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
     </PropertyGroup>
 
     <ItemGroup>
