@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Tamturk {
     public class InMemoryRevokedHashProvider : IRevokedHashProvider {
-        private ConcurrentDictionary<byte[], DateTimeOffset?> cache = new ConcurrentDictionary<byte[], DateTimeOffset?>();
+        private ConcurrentDictionary<byte[], DateTimeOffset?> cache = new ConcurrentDictionary<byte[], DateTimeOffset?>(StructuralEqualityComparer<byte[]>.Default);
 
         public int cleanupInterval = 1000;
         public int tries = 0;
@@ -21,11 +21,7 @@ namespace Tamturk {
                 cache = new ConcurrentDictionary<byte[], DateTimeOffset?>(cache.Where(a => a.Value >= time));
             }
 
-            if (!cache.TryAdd(_hash, exp)) {
-                return false;
-            }
-            
-            return true;
+            return cache.TryAdd(_hash, exp);
         }
 
         public Task<bool> TryRevokeAsync(string hash, DateTimeOffset? exp = null) {
