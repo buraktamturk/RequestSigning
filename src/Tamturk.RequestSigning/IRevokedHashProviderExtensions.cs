@@ -16,13 +16,13 @@ namespace Tamturk {
         }
         
         public static void ThrowIfRevoked(this IRevokedHashProvider revokedHashProvider, string hash) {
-            if (!revokedHashProvider.IsRevoked(hash)) {
+            if (revokedHashProvider.IsRevoked(hash)) {
                 throw new HashRevokedException();
             }
         }
         
         public static async Task ThrowIfRevokedAsync(this IRevokedHashProvider revokedHashProvider, string hash) {
-            if (!await revokedHashProvider.IsRevokedAsync(hash)) {
+            if (await revokedHashProvider.IsRevokedAsync(hash)) {
                 throw new HashRevokedException();
             }
         }
