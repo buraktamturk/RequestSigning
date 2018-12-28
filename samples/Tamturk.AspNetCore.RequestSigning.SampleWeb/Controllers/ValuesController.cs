@@ -68,7 +68,7 @@ namespace Tamturk.AspNetCore.RequestSigning.SampleWeb.Controllers {
         }
 
         [HttpGet("reset")]
-        public bool reset(string email) {
+        public async Task<bool> reset(string email) {
             // is any of the query parameters (incl. code) invalid?
             if (!Request.TryValidateRequest()) {
                 return false;
@@ -76,11 +76,18 @@ namespace Tamturk.AspNetCore.RequestSigning.SampleWeb.Controllers {
             
             // or you can use this instead, which will throw exception
             // Request.ValidateRequest();
+            
 
             // this link used before?
-            if (Request.IsRevoked()) {
-                return false;
-            }
+           // if (Request.IsRevoked()) {
+            //    return false;
+           // }
+           
+           // or
+           await Request.ThrowIfRevokedAsync();
+            
+            
+           // await Request.RevokeAsync();
             
             // or use Request.ThrowIfRevoked();
             

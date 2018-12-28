@@ -26,7 +26,7 @@ namespace Tamturk {
     }
     
     public class HashRevokedException : SigningException {
-        public HashRevokedException() : base("You may only use this link once.") {
+        public HashRevokedException() : base("You may only do this action only once.") {
             
         }
     }

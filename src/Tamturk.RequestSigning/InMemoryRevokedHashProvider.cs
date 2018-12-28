@@ -18,7 +18,7 @@ namespace Tamturk {
             
             if (++tries == cleanupInterval) {
                 DateTimeOffset time = DateTimeOffset.UtcNow;
-                cache = new ConcurrentDictionary<byte[], DateTimeOffset?>(cache.Where(a => a.Value >= time));
+                cache = new ConcurrentDictionary<byte[], DateTimeOffset?>(cache.Where(a => a.Value >= time), StructuralEqualityComparer<byte[]>.Default);
             }
 
             return cache.TryAdd(_hash, exp);
