@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http;
-using Tamturk.AspNetCore;
 
 namespace Tamturk.AspNetCore.RequestSigning.SampleWeb.Controllers {
     public class ResetPasswordModel {
@@ -12,9 +9,9 @@ namespace Tamturk.AspNetCore.RequestSigning.SampleWeb.Controllers {
     }
     
     public class ValuesController : ControllerBase {
-        private Tamturk.RequestSigning requestSigning;
+        private IRequestSigning requestSigning;
 
-        public ValuesController(Tamturk.RequestSigning requestSigning) {
+        public ValuesController(IRequestSigning requestSigning) {
             this.requestSigning = requestSigning;
         }
         

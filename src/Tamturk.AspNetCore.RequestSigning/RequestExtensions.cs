@@ -5,12 +5,12 @@ using Microsoft.Extensions.DependencyInjection;
 namespace Tamturk.AspNetCore {
     public static class RequestExtensions {
         public static void ValidateRequest(this HttpRequest request) {
-            request.HttpContext.RequestServices.GetRequiredService<RequestSigning>()
+            request.HttpContext.RequestServices.GetRequiredService<IRequestSigning>()
                    .ValidateRequest(request);
         }
         
         public static bool TryValidateRequest(this HttpRequest request) {
-            return request.HttpContext.RequestServices.GetRequiredService<RequestSigning>()
+            return request.HttpContext.RequestServices.GetRequiredService<IRequestSigning>()
                    .TryValidateRequest(request);
         }
         
