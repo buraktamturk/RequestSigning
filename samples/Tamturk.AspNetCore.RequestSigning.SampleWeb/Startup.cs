@@ -17,8 +17,7 @@ namespace Tamturk.AspNetCore.RequestSigning.SampleWeb {
             services
                 .AddRequestSigning(Configuration["signingKey"]) // use HMACSHA256 with this key that is taken from appconfig
                 .AddInMemoryRevokedHashTable() // use in memory table to store revoked tokens (optional!)
-                .AddControllers()
-                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+                .AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
